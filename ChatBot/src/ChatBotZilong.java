@@ -4,6 +4,7 @@ import java.util.Random;
  * This version:
  * @author Mr. Levin
  * @version September 2017
+ * Started
  */
 public class ChatBotZilong
 {
