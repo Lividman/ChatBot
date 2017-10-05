@@ -3,7 +3,7 @@ import java.util.Random;
 /**
  * A program to carry on conversations with a human user.
  * This version:
- * @author Mr. Levin
+ * @author Jacky Lin
  * @version September 2017
  * Starter code from MrLevinCSA
  */
@@ -17,7 +17,7 @@ public class ChatBotJacky
 	 */	
 	public String getGreeting()
 	{
-		return "Hi, what is up?";
+		return "Hi, I'm Jacky's ChatBot. I can tell you about keyboards. Specifically, I can tell you about mechanical keyboards. What kind of keyboard are you looking for?";
 	}
 	
 	/**
@@ -33,21 +33,22 @@ public class ChatBotJacky
 		
 		if (statement.length() == 0)
 		{
-			response = "Say something, please.";
+			response = "Hey, don't be so silent. Say something!";
 		}
 
-		else if (findKeyword(statement, "no") >= 0)
+		else if (findKeyword(statement, "cheap") >= 0)
 		{
-			response = "Why so negative?";
-                	emotion--;
+			response = "If you are just looking for a cheap keyboard, I can not provide much assitance.";
 		}
 		
-		else if (findKeyword(statement, "levin") >= 0)
+		else if (findKeyword(statement, "mechanical") >= 0)
 		{
-			response = "More like LevinTheDream amiright?";
-			emotion++;
+			response = "Do you want a mechanical keyboard?";
 		}
-
+		else if (findKeyword(statement, "yes") >= 0 && findKeyword(statement, "mechanical") >= 0) 
+		{
+			response = "So what kind of switches do you want?";
+		}
 		// Response transforming I want to statement
 		else if (findKeyword(statement, "I want to", 0) >= 0)
 		{
@@ -245,6 +246,7 @@ public class ChatBotJacky
 			"Could you say that again?"
 	};
 	private String [] randomAngryResponses = {"Bahumbug.", "Harumph", "The rage consumes me!"};
-	private String [] randomHappyResponses = {"H A P P Y, what's that spell?", "Today is a good day", "You make me feel like a brand new pair of shoes."};
+	private String [] randomHappyResponses = {"Hey! d"};
+	private String [] 
 	
 }
