@@ -37,14 +37,29 @@ public class ChatBotZilong
 
 		else if (findKeyword(statement, "no") >= 0)
 		{
-			response = "Then what would you like to know about?";
+			response = "Then I can't help you";
                 	emotion--;
 		}
 		
-		else if (findKeyword(statement, "levin") >= 0)
+		else if (findKeyword(statement, "buy") >= 0)
 		{
-			response = "More like LevinTheDream amiright?";
-			emotion++;
+			response = "What type of audio device would you like to purchase?";
+					emotion++;
+		}
+		else if (findKeyword(statement, "headphones") >= 0)
+		{
+			response = "What type of headphones would you like?";
+					emotion++;
+		}
+		else if (findKeyword(statement, "speakers") >= 0)
+		{
+			response = "What type of Speaker would you like?";
+					emotion++;
+		}
+		else if (findKeyword(statement, "earphones") >= 0)
+		{
+			response = "What type of Earphones would you like?";
+					emotion++;
 		}
 
 		// Response transforming I want to statement
