@@ -14,7 +14,7 @@ public class ChatBotTim {
 		 */	
 		public String getGreeting()
 		{
-			return "Hi, what is up?";
+			return "Hello! This is Tim's Chatbot! What do you want to know about computer mouses?";
 		}
 		
 		/**
@@ -30,19 +30,17 @@ public class ChatBotTim {
 			
 			if (statement.length() == 0)
 			{
-				response = "Say something, please.";
+				response = "Need help with anything?";
 			}
 
 			else if (findKeyword(statement, "no") >= 0)
 			{
-				response = "Why so negative?";
-	                	emotion--;
+				response = "Then goodbye.";
 			}
 			
-			else if (findKeyword(statement, "levin") >= 0)
+			else if (findKeyword(statement, "buy") >= 0)
 			{
-				response = "More like LevinTheDream amiright?";
-				emotion++;
+				response = "Do you want a budget mouse or a good mouse?";
 			}
 
 			// Response transforming I want to statement
@@ -232,16 +230,17 @@ public class ChatBotTim {
 			}	
 			return randomHappyResponses [r.nextInt(randomHappyResponses.length)];
 		}
-		
-		private String [] randomNeutralResponses = {"Interesting, tell me more",
-				"Hmmm.",
-				"Do you really think so?",
-				"You don't say.",
-				"It's all boolean to me.",
-				"So, would you like to go for a walk?",
-				"Could you say that again?"
+		private String[] randomCheapMice = { 
+			"https://www.amazon.com/VicTsing-Wireless-Portable-Receiver-Adjustable/dp/B013WC0P2A/ref=sr_1_2_sspa?ie=UTF8&qid=1507221556&sr=8-2-spons&keywords=mice&psc=1";
+			"https://www.amazon.com/Logitech-800dpi-Optical-3-button-Ambidextrous/dp/B003L62T7W/ref=sr_1_5?s=pc&ie=UTF8&qid=1507221688&sr=1-5&keywords=mice";
+			"https://www.amazon.com/NPET-Backlighting-High-Precision-Programmable-Professional/dp/B01HPDJ4MO/ref=sr_1_11?s=videogames&ie=UTF8&qid=1507221719&sr=1-11&keywords=mice";
 		};
-		private String [] randomAngryResponses = {"Bahumbug.", "Harumph", "The rage consumes me!"};
-		private String [] randomHappyResponses = {"H A P P Y, what's that spell?", "Today is a good day", "You make me feel like a brand new pair of shoes."};
+		private String[] randomMice = {
+			"https://www.amazon.com/Logitech-Master-Wireless-Mouse-High-precision/dp/B00TZR3WRM/ref=sr_1_8?s=videogames&ie=UTF8&qid=1507221719&sr=1-8&keywords=mice";
+			"https://www.amazon.com/Razer-DeathAdder-Elite-Ergonomic-Comfortable/dp/B01LXC1QL0/ref=sr_1_5?s=videogames&ie=UTF8&qid=1507221719&sr=1-5&keywords=mice";
+			"https://www.amazon.com/dp/B073WGFLQY?psc=1";
+		};
+		
+		
 		
 }
