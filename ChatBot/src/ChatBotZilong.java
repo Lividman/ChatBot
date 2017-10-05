@@ -16,7 +16,7 @@ public class ChatBotZilong
 	 */	
 	public String getGreeting()
 	{
-		return "Hi, what is up?";
+		return "Hi! I'm Zilong's Chatbot, what would you like to know about computer audio accessories?";
 	}
 	
 	/**
@@ -32,12 +32,12 @@ public class ChatBotZilong
 		
 		if (statement.length() == 0)
 		{
-			response = "Say something, please.";
+			response = "Would you like to know about audio accessories?";
 		}
 
 		else if (findKeyword(statement, "no") >= 0)
 		{
-			response = "Why so negative?";
+			response = "Then what would you like to know about?";
                 	emotion--;
 		}
 		
