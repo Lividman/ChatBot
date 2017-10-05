@@ -48,7 +48,7 @@ public class ChatBotTim {
 				response = "Do you want a budget mouse or a good mouse?";
 			}
 			
-			else if (findKeyword (statement, "budget") > = 0)
+			else if (findKeyword (statement, "budget") >= 0)
 			{
 				response = getRandomCheapMice();
 			}
@@ -68,7 +68,7 @@ public class ChatBotTim {
 			}	
 			else
 			{
-				response = getRandomResponse();
+				response = getRandomCheapMice();
 			}
 			
 			return response;
