@@ -3,7 +3,6 @@ import java.util.Random;
 /**
  * A program to carry on conversations with a human user.
  * This version:
- * @author Jacky Lin
  * @version September 2017
  * Starter code from MrLevinCSA
  */
@@ -48,6 +47,10 @@ public class ChatBotJacky
 		else if (findKeyword(statement, "yes") >= 0 && findKeyword(statement, "mechanical") >= 0) 
 		{
 			response = "So what kind of switches do you want?";
+		}
+		else if (findKeyword(statement, "switches") >= 0)
+		{
+			response = "";
 		}
 		// Response transforming I want to statement
 		else if (findKeyword(statement, "I want to", 0) >= 0)
@@ -247,6 +250,5 @@ public class ChatBotJacky
 	};
 	private String [] randomAngryResponses = {"Bahumbug.", "Harumph", "The rage consumes me!"};
 	private String [] randomHappyResponses = {"Hey! d"};
-	private String [] 
 	
 }
