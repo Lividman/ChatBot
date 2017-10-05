@@ -38,11 +38,25 @@ public class ChatBotTim {
 				response = "Then goodbye.";
 			}
 			
+			else if (findKeyword(statement, "Tim") >= 0)
+			{
+				response = "Yes?";
+			}
+			
 			else if (findKeyword(statement, "buy") >= 0)
 			{
 				response = "Do you want a budget mouse or a good mouse?";
 			}
-
+			
+			else if (findKeyword (statement, "budget") > = 0)
+			{
+				response = getRandomCheapMice();
+			}
+			
+			else if (findKeyword(statement, "good") >= 0)
+			{
+				response = getRandomGoodMice();
+			}
 			// Response transforming I want to statement
 			else if (findKeyword(statement, "I want to", 0) >= 0)
 			{
@@ -217,28 +231,25 @@ public class ChatBotTim {
 		 * Pick a default response to use if nothing else fits.
 		 * @return a non-committal string
 		 */
-		private String getRandomResponse ()
+		private String getRandomCheapMice()
 		{
 			Random r = new Random ();
-			if (emotion == 0)
-			{	
-				return randomNeutralResponses [r.nextInt(randomNeutralResponses.length)];
-			}
-			if (emotion < 0)
-			{	
-				return randomAngryResponses [r.nextInt(randomAngryResponses.length)];
-			}	
-			return randomHappyResponses [r.nextInt(randomHappyResponses.length)];
+			return randomCheapMice [r.nextInt(randomCheapMice.length)];
+		}
+		private String getRandomGoodMice()
+		{
+			Random r = new Random();
+			return randomMice [r.nextInt(randomMice.length)];
 		}
 		private String[] randomCheapMice = { 
-			"https://www.amazon.com/VicTsing-Wireless-Portable-Receiver-Adjustable/dp/B013WC0P2A/ref=sr_1_2_sspa?ie=UTF8&qid=1507221556&sr=8-2-spons&keywords=mice&psc=1";
-			"https://www.amazon.com/Logitech-800dpi-Optical-3-button-Ambidextrous/dp/B003L62T7W/ref=sr_1_5?s=pc&ie=UTF8&qid=1507221688&sr=1-5&keywords=mice";
-			"https://www.amazon.com/NPET-Backlighting-High-Precision-Programmable-Professional/dp/B01HPDJ4MO/ref=sr_1_11?s=videogames&ie=UTF8&qid=1507221719&sr=1-11&keywords=mice";
+			"https://www.amazon.com/VicTsing-Wireless-Portable-Receiver-Adjustable/dp/B013WC0P2A/ref=sr_1_2_sspa?ie=UTF8&qid=1507221556&sr=8-2-spons&keywords=mice&psc=1",
+			"https://www.amazon.com/Logitech-800dpi-Optical-3-button-Ambidextrous/dp/B003L62T7W/ref=sr_1_5?s=pc&ie=UTF8&qid=1507221688&sr=1-5&keywords=mice",
+			"https://www.amazon.com/NPET-Backlighting-High-Precision-Programmable-Professional/dp/B01HPDJ4MO/ref=sr_1_11?s=videogames&ie=UTF8&qid=1507221719&sr=1-11&keywords=mice"
 		};
 		private String[] randomMice = {
-			"https://www.amazon.com/Logitech-Master-Wireless-Mouse-High-precision/dp/B00TZR3WRM/ref=sr_1_8?s=videogames&ie=UTF8&qid=1507221719&sr=1-8&keywords=mice";
-			"https://www.amazon.com/Razer-DeathAdder-Elite-Ergonomic-Comfortable/dp/B01LXC1QL0/ref=sr_1_5?s=videogames&ie=UTF8&qid=1507221719&sr=1-5&keywords=mice";
-			"https://www.amazon.com/dp/B073WGFLQY?psc=1";
+			"https://www.amazon.com/Logitech-Master-Wireless-Mouse-High-precision/dp/B00TZR3WRM/ref=sr_1_8?s=videogames&ie=UTF8&qid=1507221719&sr=1-8&keywords=mice",
+			"https://www.amazon.com/Razer-DeathAdder-Elite-Ergonomic-Comfortable/dp/B01LXC1QL0/ref=sr_1_5?s=videogames&ie=UTF8&qid=1507221719&sr=1-5&keywords=mice",
+			"https://www.amazon.com/dp/B073WGFLQY?psc=1"
 		};
 		
 		
