@@ -57,10 +57,10 @@ public class ChatBotTim {
 			{
 				response = getRandomGoodMice();
 			}
-			// Response transforming I want to statement
-			else if (findKeyword(statement, "I want to", 0) >= 0)
+			
+			else if (findKeyword(statement, "help") >= 0)
 			{
-				response = transformIWantToStatement(statement);
+				response = getHelp();
 			}
 			else if (findKeyword(statement, "I want",0) >= 0)
 			{
@@ -241,6 +241,11 @@ public class ChatBotTim {
 			Random r = new Random();
 			return randomMice [r.nextInt(randomMice.length)];
 		}
+		private String getHelp()
+		{
+			Random r = new Random();
+			return randomHelp [r.nextInt(randomHelp.length)];
+		}
 		private String[] randomCheapMice = { 
 			"https://www.amazon.com/VicTsing-Wireless-Portable-Receiver-Adjustable/dp/B013WC0P2A/ref=sr_1_2_sspa?ie=UTF8&qid=1507221556&sr=8-2-spons&keywords=mice&psc=1",
 			"https://www.amazon.com/Logitech-800dpi-Optical-3-button-Ambidextrous/dp/B003L62T7W/ref=sr_1_5?s=pc&ie=UTF8&qid=1507221688&sr=1-5&keywords=mice",
@@ -251,7 +256,22 @@ public class ChatBotTim {
 			"https://www.amazon.com/Razer-DeathAdder-Elite-Ergonomic-Comfortable/dp/B01LXC1QL0/ref=sr_1_5?s=videogames&ie=UTF8&qid=1507221719&sr=1-5&keywords=mice",
 			"https://www.amazon.com/dp/B073WGFLQY?psc=1"
 		};
-		
+		private String[] randomHelp = {
+			"Try smashing the mouse on the floor",
+			"Try unplugging then replugging the mouse",
+			"Try restarting the computer",
+			"Try getting a new mouse",
+			"Try replacing the batteries",
+			"Try getting a new mousepad",
+			"Try getting a new computer"
+		};
+		private String[] helpKeywords = {
+			"help",
+			"assistance",
+			"not work",
+			"doesn't work",
+			"Help"
+		};
 		
 		
 }
