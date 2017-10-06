@@ -2,6 +2,7 @@ import java.util.Random;
 
 public class ChatBotBrandon 
 {
+	String state = "";
 	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time.
 		int emotion = 0;
 		/**
@@ -10,7 +11,7 @@ public class ChatBotBrandon
 		 */	
 		public String getGreeting()
 		{
-			return "Hi, what is up?";
+			return "Yo wassup B, u wanna play a game or do you want to talk about computers?";
 		}
 		
 		/**
@@ -26,18 +27,34 @@ public class ChatBotBrandon
 			
 			if (statement.length() == 0)
 			{
-				response = "Say something, please.";
+				response = "Hey man I can only respond if you say something";
 			}
 
-			else if (findKeyword(statement, "no") >= 0)
+			else if (findKeyword(statement, "Game") >= 0)
 			{
-				response = "Why so negative?";
-	                	emotion--;
+				response = "Alright, lets play rock paper scissors, let me warn you though, I'm quite good";
+	            emotion++;
+	            state = "game";
+	            while(state == "game")
+	            {
+	            	response = "I've never lost, say your answer and ill come up with mine at the same time";
+	            	if(statement == "rock")
+	            		response = "paper! Haha! I won, you suck lol. Ill keep playing until you want to stop";
+	            }
+	            {
+	            	if(statement == "paper")
+	            		response = "scissors! Haha! I won, you suck lol. Ill keep playing until you want to stop";
+	            }
+	            {
+	            	if(statement == "scissors")
+	            		response = "rock! Haha! I won, you suck lol. Ill keep playing until you want to stop";
+	            }
 			}
 			
-			else if (findKeyword(statement, "levin") >= 0)
+			else if (findKeyword(statement, "done") >= 0)
 			{
-				response = "More like LevinTheDream amiright?";
+				response = "Ah, so you're done playing i guess? We can talk about computers now";
+				state = "computers";
 				emotion++;
 			}
 

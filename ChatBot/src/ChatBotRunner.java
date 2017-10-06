@@ -18,7 +18,7 @@ public class ChatBotRunner
 		ChatBotJacky chatbot2 =  new ChatBotJacky();
 		ChatBotTim chatbot3 =  new ChatBotTim();
 		ChatBotZilong chatbot4 =  new ChatBotZilong();
-		System.out.println("Do you want to talk to Brandon or Jacky?");
+		System.out.println("Do you want to talk to Brandon, Jacky, Zilong or Tim?");
 		Scanner in = new Scanner (System.in);
 		String statement = in.nextLine();
 		if (statement.equals("Brandon"))
