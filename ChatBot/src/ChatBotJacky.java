@@ -13,7 +13,7 @@ public class ChatBotJacky
 	/**
 	 * Get a default greeting 	
 	 * @return a greeting
-	 */	
+	 */
 	public String getGreeting()
 	{
 		return "Hi, I'm Jacky's ChatBot. I can tell you about keyboards. Specifically, I can tell you about mechanical keyboards. What kind of keyboard are you looking for?";
@@ -42,7 +42,7 @@ public class ChatBotJacky
 		
 		else if (findKeyword(statement, "mechanical") >= 0)
 		{
-			response = "Do you want a mechanical keyboard?";
+			response = "So you want a mechanical keyboard?";
 		}
 		else if (findKeyword(statement, "yes") >= 0 && findKeyword(statement, "mechanical") >= 0) 
 		{
@@ -250,5 +250,6 @@ public class ChatBotJacky
 	};
 	private String [] randomAngryResponses = {"Bahumbug.", "Harumph", "The rage consumes me!"};
 	private String [] randomHappyResponses = {"Hey! d"};
+	private String [] switches = {"red", "brown", "black", "blue", "green"};
 	
 }
