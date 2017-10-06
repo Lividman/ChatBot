@@ -16,7 +16,8 @@ public class ChatBotZilong
 	 */	
 	public String getGreeting()
 	{
-		return "Hi! I'm Zilong's Chatbot, what would you like to know about computer audio accessories?";
+		return "Hi! I'm Zilong's Chatbot, I can help you with computer audio accesrroies such as headphones, speakers, and earphones/earbuds! "
+				+ "which computer audio accessory are you intrested in?";
 	}
 	
 	/**
@@ -34,33 +35,65 @@ public class ChatBotZilong
 		{
 			response = "Would you like to know about audio accessories?";
 		}
-
+		
 		else if (findKeyword(statement, "no") >= 0)
 		{
 			response = "Then I can't help you";
                 	emotion--;
 		}
-		
+		// buying
 		else if (findKeyword(statement, "buy") >= 0)
 		{
 			response = "What type of audio device would you like to purchase?";
 					emotion++;
 		}
+		else if (findKeyword(statement, "purchase") >= 0)
+		{
+			response = "What type of audio device would you like to purchase?";
+					emotion++;
+		}
+		// headphones 
 		else if (findKeyword(statement, "headphones") >= 0)
 		{
 			response = "What type of headphones would you like?";
 					emotion++;
 		}
+		// speakers
 		else if (findKeyword(statement, "speakers") >= 0)
 		{
 			response = "What type of Speaker would you like?";
 					emotion++;
 		}
+		// Earphones/Earbuds
 		else if (findKeyword(statement, "earphones") >= 0)
 		{
 			response = "What type of Earphones would you like?";
 					emotion++;
 		}
+		else if (findKeyword(statement, "earbuds") >= 0)
+		{
+			response = "What type of Earbuds would you like?";
+			
+					emotion++;
+		}
+		// cheap
+		else if (findKeyword(statement, "cheap") >= 0)
+		{
+			response = "There are many choices of mouses that are suitable";
+					emotion++;
+		}
+		// Expensive/good
+		else if (findKeyword(statement, "Expensive") >= 0)
+		{
+			response = "There are many choices of mouses that are suitable";
+					emotion++;
+		}
+		else if (findKeyword(statement, "good") >= 0)
+		{
+			response = "There are many choices of mouses that are suitable";
+					emotion++;
+		}
+		
 
 		// Response transforming I want to statement
 		else if (findKeyword(statement, "I want to", 0) >= 0)
@@ -251,14 +284,14 @@ public class ChatBotZilong
 	}
 	
 	private String [] randomNeutralResponses = {"Interesting, tell me more",
-			"Hmmm.",
-			"Do you really think so?",
-			"You don't say.",
-			"It's all boolean to me.",
-			"So, would you like to go for a walk?",
-			"Could you say that again?"
+			"Do you need help with anything?",
+			"What audio accessory are you planning to purchase?",
+			"What audio accessory are you looking for?",
+			"",
+			"",
+			""
 	};
-	private String [] randomAngryResponses = {"Bahumbug.", "Harumph", "The rage consumes me!"};
-	private String [] randomHappyResponses = {"H A P P Y, what's that spell?", "Today is a good day", "You make me feel like a brand new pair of shoes."};
+	private String [] randomAngryResponses = {"Do you need anything???", "Hurry up please.", ""};
+	private String [] randomHappyResponses = {"It's nice talking to you", "Today is a good day", "You make me feel like a brand new pair of shoes."};
 	
 }
