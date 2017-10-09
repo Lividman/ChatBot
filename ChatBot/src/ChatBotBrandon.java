@@ -33,43 +33,40 @@ public class ChatBotBrandon
 			else if (findKeyword(statement, "Game") >= 0)
 			{
 				response = "Alright, lets play rock paper scissors, let me warn you though, I'm quite good";
-	            emotion++;
 	            state = "game";
-	            while(state == "game")
-	            {
-	            	response = "I've never lost, say your answer and ill come up with mine at the same time";
-	            	if(statement == "rock")
-	            		response = "paper! Haha! I won, you suck lol. Ill keep playing until you want to stop";
-	            }
-	            {
-	            	if(statement == "paper")
-	            		response = "scissors! Haha! I won, you suck lol. Ill keep playing until you want to stop";
-	            }
-	            {
-	            	if(statement == "scissors")
-	            		response = "rock! Haha! I won, you suck lol. Ill keep playing until you want to stop";
-	            }
+	        }
+			else if(findKeyword(statement, "rock") >= 0)
+			{
+				response = "paper! Haha, i win you suck lol";
 			}
-			
-			else if (findKeyword(statement, "done") >= 0)
+			else if(findKeyword(statement, "paper") >= 0)
+			{
+				response = "scissors! Haha, i win you suck lol";
+			}
+			else if(findKeyword(statement, "scissors") >= 0)
+			{
+				response = "rock! Haha, i win you suck lol";
+			}
+			if (findKeyword(statement, "done") >= 0)
 			{
 				response = "Ah, so you're done playing i guess? We can talk about computers now";
 				state = "computers";
-				emotion++;
 			}
-
-			// Response transforming I want to statement
-			else if (findKeyword(statement, "I want to", 0) >= 0)
+			if(state != "game")	
 			{
-				response = transformIWantToStatement(statement);
-			}
-			else if (findKeyword(statement, "I want",0) >= 0)
-			{
-				response = transformIWantStatement(statement);
-			}	
-			else
-			{
-				response = getRandomResponse();
+				// Response transforming I want to statement
+				if (findKeyword(statement, "I want to", 0) >= 0)
+				{
+					response = transformIWantToStatement(statement);
+				}
+				else if (findKeyword(statement, "I want",0) >= 0)
+				{
+					response = transformIWantStatement(statement);
+				}	
+				else
+				{
+					response = getRandomResponse();
+				}
 			}
 			
 			return response;
