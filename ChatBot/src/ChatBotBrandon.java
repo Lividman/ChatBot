@@ -2,9 +2,9 @@ import java.util.Random;
 
 public class ChatBotBrandon 
 {
+	//The chatbot will either be in a rock paper scissors state or a computer state, where you either play rock paper scissors or talk about computers
 	String state = "";
 	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time.
-		int emotion = 0;
 		/**
 		 * Get a default greeting 	
 		 * @return a greeting
@@ -29,7 +29,6 @@ public class ChatBotBrandon
 			{
 				response = "Hey man I can only respond if you say something";
 			}
-
 			else if (findKeyword(statement, "Game") >= 0)
 			{
 				response = "Alright, lets play rock paper scissors, let me warn you though, I'm quite good";
