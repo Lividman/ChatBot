@@ -1,5 +1,4 @@
 import java.util.Random;
-import java.util.Scanner;
 
 /**
  * A program to carry on conversations with a human user.
@@ -11,7 +10,10 @@ public class ChatBotJacky
 {
 	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time.
 	int emotion = 0;
-	Scanner input = new Scanner(System.in);
+	private String [] randomNeutralResponses = {"Interesting, tell me more","Hmmm.","Do you really think so?","You don't say.","It's all boolean to me.","So, would you like to go for a walk?","Could you say that again?"};
+	private String [] randomAngryResponses = {"Bahumbug.", "Harumph", "The rage consumes me!"};
+	private String [] randomHappyResponses = {"Hey! d"};
+	private String [] switchColors = {"red", "brown", "black", "blue", "green", "clear"};
 	/**
 	 * Get a default greeting 	
 	 * @return a greeting
@@ -36,34 +38,13 @@ public class ChatBotJacky
 		{
 			response = "Hey, don't be so silent. Say something!";
 		}
-
 		else if (findKeyword(statement, "cheap") >= 0)
 		{
-			System.out.println("Are you looking for a cheap keyboard?");
-			String answer = input.nextLine();
-			if(answer.equals("yes"))
-			{
-				System.out.print("So what switch color are you looking for?");
-				String color = input.nextLine();
-				System.out.println(findSwitch(statement));
-				if(color.equals(findSwitch(statement)))
-				{
-					response = "hi";
-				}
-			}
+			response = "hi";
 		}
-		
-		else if (findKeyword(statement, "mechanical") >= 0)
+		else if() 
 		{
-			response = "So you want a mechanical keyboard?";
-		}
-		else if (findKeyword(statement, "yes") >= 0 && findKeyword(statement, "mechanical") >= 0) 
-		{
-			response = "So what kind of switches do you want?";
-		}
-		else if (findKeyword(statement, "switches") >= 0)
-		{
-			response = "";
+			
 		}
 		// Response transforming I want to statement
 		else if (findKeyword(statement, "I want to", 0) >= 0)
@@ -89,7 +70,7 @@ public class ChatBotJacky
 		{
 			if(findKeyword(statement, switchColors[i],0) >= 0)
 			{
-				theSwitch += switchColors[i];
+				theSwitch = switchColors[i];
 			}
 		}
 		return theSwitch;
@@ -265,19 +246,5 @@ public class ChatBotJacky
 		}	
 		return randomHappyResponses [r.nextInt(randomHappyResponses.length)];
 	}
-	
-	private String [] randomNeutralResponses = {"Interesting, tell me more",
-			"Hmmm.",
-			"Do you really think so?",
-			"You don't say.",
-			"It's all boolean to me.",
-			"So, would you like to go for a walk?",
-			"Could you say that again?"
-	};
-	private String [] randomAngryResponses = {"Bahumbug.", "Harumph", "The rage consumes me!"};
-	private String [] randomHappyResponses = {"Hey! d"};
-	private String [] switchColors = {"red", "brown", "black", "blue", "green", "clear"};
-	private String [] linear = {"red", "black"};
-	private String [] tactile = {"brown", "blue", "green", "clear"}; 	
 	
 }
