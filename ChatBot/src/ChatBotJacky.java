@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.Scanner;
 
 /**
  * A program to carry on conversations with a human user.
@@ -10,13 +11,14 @@ public class ChatBotJacky
 {
 	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time.
 	int emotion = 0;
+	Scanner input = new Scanner(System.in);
 	/**
 	 * Get a default greeting 	
 	 * @return a greeting
 	 */
 	public String getGreeting()
 	{
-		return "Hi, I'm Jacky's ChatBot. I can tell you about keyboards. Specifically, I can tell you about mechanical keyboards. What kind of keyboard are you looking for?";
+		return "Hi, I'm Jacky's ChatBot. I can tell you about mechanical keyboards.";
 	}
 	
 	/**
@@ -37,7 +39,18 @@ public class ChatBotJacky
 
 		else if (findKeyword(statement, "cheap") >= 0)
 		{
-			response = "If you are just looking for a cheap keyboard, I can not provide much assitance.";
+			System.out.println("Are you looking for a cheap keyboard?");
+			String answer = input.nextLine();
+			if(answer.equals("yes"))
+			{
+				System.out.print("So what switch color are you looking for?");
+				String color = input.nextLine();
+				System.out.println(findSwitch(statement));
+				if(color.equals(findSwitch(statement)))
+				{
+					response = "hi";
+				}
+			}
 		}
 		
 		else if (findKeyword(statement, "mechanical") >= 0)
@@ -67,6 +80,19 @@ public class ChatBotJacky
 		}
 		
 		return response;
+	}
+	
+	public String findSwitch(String statement)
+	{
+		String theSwitch = "";
+		for(int i = 0; i < switchColors.length; i++)
+		{
+			if(findKeyword(statement, switchColors[i],0) >= 0)
+			{
+				theSwitch += switchColors[i];
+			}
+		}
+		return theSwitch;
 	}
 	
 	/**
@@ -250,6 +276,8 @@ public class ChatBotJacky
 	};
 	private String [] randomAngryResponses = {"Bahumbug.", "Harumph", "The rage consumes me!"};
 	private String [] randomHappyResponses = {"Hey! d"};
-	private String [] switches = {"red", "brown", "black", "blue", "green"};
+	private String [] switchColors = {"red", "brown", "black", "blue", "green", "clear"};
+	private String [] linear = {"red", "black"};
+	private String [] tactile = {"brown", "blue", "green", "clear"}; 	
 	
 }
