@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.ArrayList;
 
 /**
  * A program to carry on conversations with a human user.
@@ -14,6 +15,10 @@ public class ChatBotJacky
 	private String [] randomAngryResponses = {"Bahumbug.", "Harumph", "The rage consumes me!"};
 	private String [] randomHappyResponses = {"Hey! d"};
 	private String [] switchColors = {"red", "brown", "black", "blue", "green", "clear"};
+	private ArrayList<String> userInput = new ArrayList<String>();
+	// userInput.add("");
+	// userInput.get(The number);  Essentially this will grab the item in the array at that position index.
+	public String theSwitch = "";
 	/**
 	 * Get a default greeting 	
 	 * @return a greeting
@@ -42,9 +47,9 @@ public class ChatBotJacky
 		{
 			response = "hi";
 		}
-		else if() 
+		else if(findSwitch(statement)) 
 		{
-			
+			response = switchExplain(statement);
 		}
 		// Response transforming I want to statement
 		else if (findKeyword(statement, "I want to", 0) >= 0)
@@ -63,17 +68,47 @@ public class ChatBotJacky
 		return response;
 	}
 	
-	public String findSwitch(String statement)
+	public boolean findSwitch(String statement)
 	{
-		String theSwitch = "";
 		for(int i = 0; i < switchColors.length; i++)
 		{
-			if(findKeyword(statement, switchColors[i],0) >= 0)
+			if(findKeyword(statement, switchColors[i]) >= 0)
 			{
 				theSwitch = switchColors[i];
+				return true;
 			}
 		}
-		return theSwitch;
+		return false;
+	}
+	
+	public String switchExplain(String statement)
+	{
+		String explain = "";
+		if(theSwitch.equals("red"))
+		{
+			explain = "Red switches are linear";
+		}
+		else if(theSwitch.equals("black"))
+		{
+			explain = "Black switches are linear";
+		}
+		else if(theSwitch.equals("brown"))
+		{
+			explain = "Brown switches are tactile";
+		}
+		else if(theSwitch.equals("blue"))
+		{
+			explain = "BLue switches are tactile";
+		}
+		else if(theSwitch.equals("green"))
+		{
+			explain = "Green switches are tactile";
+		}
+		else if(theSwitch.equals("clear"))
+		{
+			explain = "Clear switches are tactile";
+		}
+		return explain;
 	}
 	
 	/**
