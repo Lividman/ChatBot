@@ -16,8 +16,7 @@ public class ChatBotZilong
 	 */	
 	public String getGreeting()
 	{
-		return "Hi! I'm Zilong's Chatbot, I can help you with computer audio accesrroies such as headphones, speakers, and earphones/earbuds! "
-				+ "which computer audio accessory are you intrested in?";
+		return "Hi! I'm Zilong's Chatbot! What do you need to know about headphones?"
 	}
 	
 	/**
@@ -33,7 +32,7 @@ public class ChatBotZilong
 		
 		if (statement.length() == 0)
 		{
-			response = "Would you like to know about audio accessories?";
+			response = "Would you like to know about Headphones?";
 		}
 		
 		else if (findKeyword(statement, "no") >= 0)
@@ -41,60 +40,56 @@ public class ChatBotZilong
 			response = "Then I can't help you";
                 	emotion--;
 		}
-		// buying
+		// buying/purchase
 		else if (findKeyword(statement, "buy") >= 0)
 		{
-			response = "What type of audio device would you like to purchase?";
+			response = "What type of headphones would you like to purchase? There are a variety of headphones ranging from budget headphones to more pricey ones.";
 					emotion++;
 		}
 		else if (findKeyword(statement, "purchase") >= 0)
 		{
-			response = "What type of audio device would you like to purchase?";
+			response = "What type of headphones would you like to purchase? There are a variety of headphones ranging from budget/cheaper headphones to more pricey ones.";
 					emotion++;
 		}
 		// headphones 
 		else if (findKeyword(statement, "headphones") >= 0)
 		{
-			response = "What type of headphones would you like?";
-					emotion++;
-		}
-		// speakers
-		else if (findKeyword(statement, "speakers") >= 0)
-		{
-			response = "What type of Speaker would you like?";
-					emotion++;
-		}
-		// Earphones/Earbuds
-		else if (findKeyword(statement, "earphones") >= 0)
-		{
-			response = "What type of Earphones would you like?";
-					emotion++;
-		}
-		else if (findKeyword(statement, "earbuds") >= 0)
-		{
-			response = "What type of Earbuds would you like?";
-			
+			response = "Would you like help with your current headphones or assistance purchasing new ones?";
 					emotion++;
 		}
 		// cheap
 		else if (findKeyword(statement, "cheap") >= 0)
 		{
-			response = "There are many choices of mouses that are suitable";
+			response = "It seems you're running on a budget but there are many great headphones that are cheap such as ";
 					emotion++;
 		}
-		// Expensive/good
+		else if (findKeyword(statement, "budget") >= 0)
+		{
+			response = "Some budget headphones that I recommend are ";
+					emotion++;
+		}
+		// Expensive/good/pricey
 		else if (findKeyword(statement, "Expensive") >= 0)
 		{
-			response = "There are many choices of mouses that are suitable";
+			response = "There are many expensive headphones such as ";
 					emotion++;
 		}
 		else if (findKeyword(statement, "good") >= 0)
 		{
-			response = "There are many choices of mouses that are suitable";
+			response = "There are many good headphones such as ";
 					emotion++;
 		}
-		
-
+		else if (findKeyword(statement, "pricey") >= 0)
+		{
+			response = "There are many pricey headphones such as ";
+					emotion++;
+		}
+		// Gaming
+		else if (findKeyword(statement, "gaming") >= 0)
+		{
+			response = "Some gaming headphones I would recommend are ";
+					emotion++;
+		}
 		// Response transforming I want to statement
 		else if (findKeyword(statement, "I want to", 0) >= 0)
 		{
@@ -285,13 +280,13 @@ public class ChatBotZilong
 	
 	private String [] randomNeutralResponses = {"Interesting, tell me more",
 			"Do you need help with anything?",
-			"What audio accessory are you planning to purchase?",
-			"What audio accessory are you looking for?",
+			"What headphones are you planning to purchase?",
+			"What headphones are you looking for?",
 			"",
 			"",
 			""
 	};
-	private String [] randomAngryResponses = {"Do you need anything???", "Hurry up please.", ""};
+	private String [] randomAngryResponses = {"Do you need anything???", "Hurry up please.", "I don't have all day. What do you need help with?"};
 	private String [] randomHappyResponses = {"It's nice talking to you", "Today is a good day", "You make me feel like a brand new pair of shoes."};
 	
 }
