@@ -11,7 +11,7 @@ public class ChatBotJacky
 {
 	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time.
 	int emotion = 0;
-	private String [] randomNeutralResponses = {"Keyboards are essential things", "Hello", "What are you looking for?"};
+	private String [] randomNeutralResponses = {"Keyboards are essential things", "Hello", "What are you looking for"};
 	private String [] randomAngryResponses = {""};
 	private String [] randomHappyResponses = {"Hey! d"};
 	private String [] switchColors = {"red", "brown", "black", "blue", "green", "clear"};
