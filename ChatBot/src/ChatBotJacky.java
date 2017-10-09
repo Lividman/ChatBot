@@ -11,10 +11,11 @@ public class ChatBotJacky
 {
 	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time.
 	int emotion = 0;
-	private String [] randomNeutralResponses = {"Interesting, tell me more","Hmmm.","Do you really think so?","You don't say.","It's all boolean to me.","So, would you like to go for a walk?","Could you say that again?"};
-	private String [] randomAngryResponses = {"Bahumbug.", "Harumph", "The rage consumes me!"};
+	private String [] randomNeutralResponses = {"Keyboards are essential things", "Hello", ""};
+	private String [] randomAngryResponses = {""};
 	private String [] randomHappyResponses = {"Hey! d"};
 	private String [] switchColors = {"red", "brown", "black", "blue", "green", "clear"};
+	boolean askColor;
 	private ArrayList<String> userInput = new ArrayList<String>();
 	// userInput.add("");
 	// userInput.get(The number);  Essentially this will grab the item in the array at that position index.
@@ -49,7 +50,20 @@ public class ChatBotJacky
 		}
 		else if(findSwitch(statement)) 
 		{
-			response = switchExplain(statement);
+			if(userInput.contains(statement) == false)
+			{
+				response = switchExplain(statement);
+				userInput.add(statement);
+			}
+			else
+			{
+				emotion--;
+				return "Come on! You asked about that earlier already!";
+			}
+		}
+		else if(findKeyword(statement, "small") >= 0)
+		{
+			response = "If you want a small keyboard, you should look into purchasing a 60%";
 		}
 		// Response transforming I want to statement
 		else if (findKeyword(statement, "I want to", 0) >= 0)
@@ -64,7 +78,8 @@ public class ChatBotJacky
 		{
 			response = getRandomResponse();
 		}
-		
+		System.out.println(userInput);
+		//System.out.println(showConvo(0));
 		return response;
 	}
 	
@@ -80,7 +95,7 @@ public class ChatBotJacky
 		}
 		return false;
 	}
-	
+	// System.out.println("Do you want to know about other color switches? \n black \n brown \n blue \n green \n clear");
 	public String switchExplain(String statement)
 	{
 		String explain = "";
@@ -110,6 +125,7 @@ public class ChatBotJacky
 		}
 		return explain;
 	}
+	
 	
 	/**
 	 * Take a statement with "I want to <something>." and transform it into 
