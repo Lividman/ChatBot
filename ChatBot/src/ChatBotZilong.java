@@ -8,7 +8,7 @@ import java.util.Random;
  */
 public class ChatBotZilong
 {
-	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time. hisgs
+	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time.
 	int emotion = 0;
 	/**
 	 * Get a default greeting 	
@@ -60,34 +60,34 @@ public class ChatBotZilong
 		// cheap
 		else if (findKeyword(statement, "cheap") >= 0)
 		{
-			response = "It seems you're running on a budget but there are many great headphones that are cheap such as" + getRandomBudgetHeadphones();
+			response = "It seems you're running on a budget but there are many great headphones that are cheap such as " + getRandomBudgetHeadphones();
 					emotion++;
 		}
 		else if (findKeyword(statement, "budget") >= 0)
 		{
-			response = "Some budget headphones that I recommend are" + getRandomBudgetHeadphones();
+			response = "Some budget headphones that I recommend are " + getRandomBudgetHeadphones();
 					emotion++;
 		}
 		// Expensive/good/pricey
 		else if (findKeyword(statement, "Expensive") >= 0)
 		{
-			response = "There are many expensive headphones such as" + getRandomExpensiveHeadphones();
+			response = "There are many expensive headphones such as " + getRandomExpensiveHeadphones();
 					emotion++;
 		}
 		else if (findKeyword(statement, "good") >= 0)
 		{
-			response = "There are many good headphones such as" + getRandomExpensiveHeadphones();
+			response = "There are many good headphones such as " + getRandomExpensiveHeadphones();
 					emotion++;
 		}
 		else if (findKeyword(statement, "pricey") >= 0)
 		{
-			response = "There are many pricey headphones such as" + getRandomExpensiveHeadphones();
+			response = "There are many pricey headphones such as " + getRandomExpensiveHeadphones();
 					emotion++;
 		}
 		// Gaming
 		else if (findKeyword(statement, "gaming") >= 0)
 		{
-			response = "Some gaming headphones I would recommend are ";
+			response = "Some gaming headphones I would recommend are " + getRandomGamingHeadphones();
 					emotion++;
 		}
 		// Response transforming I want to statement
