@@ -29,6 +29,7 @@ public class ChatBotTim {
 
 			else if (findKeyword(statement, "nothing") >= 0)
 			{
+				System.out.println("Then Goodbye");
 				ChatBotRunner.main(null);
 			}
 			
@@ -40,17 +41,16 @@ public class ChatBotTim {
 			else if (findKeyword(statement, "buy") >= 0)
 			{
 				response = "Do you want a budget mouse or a good mouse?";
-				recommendation(statement);
 			}
 			
-			else if (findKeyword (statement, "budget") >= 0)
+			else if (findKeyword (statement, "budget") >= 0 || findKeyword(statement, "good") >= 0)
 			{
-				response = "I recommend " + getRandomCheapMice();
+				response = recommendation(statement);
 			}
 			
-			else if (findKeyword(statement, "good") >= 0)
+			else if (findKeyword (statement, "thank") >= 0)
 			{
-				response = "I recommend " + getRandomGoodMice();
+				response = "You're welcome! Do you need help with anything else?";
 			}
 			
 			else if (help(statement) == true)

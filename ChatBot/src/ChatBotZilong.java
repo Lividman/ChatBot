@@ -8,7 +8,7 @@ import java.util.Random;
  */
 public class ChatBotZilong
 {
-	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time. hisgs
+	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time.
 	int emotion = 0;
 	/**
 	 * Get a default greeting 	
@@ -37,18 +37,18 @@ public class ChatBotZilong
 		
 		else if (findKeyword(statement, "no") >= 0)
 		{
-			response = "Then I can't help you";
+			response = "Then I can't help you, come back when you need help with your headphones.";
                 	emotion--;
 		}
 		// buying/purchase
 		else if (findKeyword(statement, "buy") >= 0)
 		{
-			response = "What type of headphones would you like to purchase? There are a variety of headphones ranging from budget headphones to more pricey ones.";
+			response = "What type of headphones would you like to purchase? There are a variety of headphones ranging from budget headphones to more pricey ones or even gaming ones.";
 					emotion++;
 		}
 		else if (findKeyword(statement, "purchase") >= 0)
 		{
-			response = "What type of headphones would you like to purchase? There are a variety of headphones ranging from budget/cheaper headphones to more pricey ones.";
+			response = "What type of headphones would you like to purchase? There are a variety of headphones ranging from budget/cheaper headphones to more pricey ones or even gaming ones.";
 					emotion++;
 		}
 		// headphones 
@@ -60,34 +60,40 @@ public class ChatBotZilong
 		// cheap
 		else if (findKeyword(statement, "cheap") >= 0)
 		{
-			response = "It seems you're running on a budget but there are many great headphones that are cheap such as" + getRandomBudgetHeadphones();
+			response = "It seems you're running on a budget but there are many great headphones that are cheap such as " + getRandomBudgetHeadphones();
 					emotion++;
 		}
 		else if (findKeyword(statement, "budget") >= 0)
 		{
-			response = "Some budget headphones that I recommend are" + getRandomBudgetHeadphones();
+			response = "Some budget headphones that I recommend are " + getRandomBudgetHeadphones();
 					emotion++;
 		}
 		// Expensive/good/pricey
 		else if (findKeyword(statement, "Expensive") >= 0)
 		{
-			response = "There are many expensive headphones such as" + getRandomExpensiveHeadphones();
+			response = "There are many expensive headphones such as " + getRandomExpensiveHeadphones();
 					emotion++;
 		}
 		else if (findKeyword(statement, "good") >= 0)
 		{
-			response = "There are many good headphones such as" + getRandomExpensiveHeadphones();
+			response = "There are many good headphones such as " + getRandomExpensiveHeadphones();
 					emotion++;
 		}
 		else if (findKeyword(statement, "pricey") >= 0)
 		{
-			response = "There are many pricey headphones such as" + getRandomExpensiveHeadphones();
+			response = "There are many pricey headphones such as " + getRandomExpensiveHeadphones();
 					emotion++;
 		}
 		// Gaming
 		else if (findKeyword(statement, "gaming") >= 0)
 		{
-			response = "Some gaming headphones I would recommend are ";
+			response = "Some gaming headphones I would recommend are " + getRandomGamingHeadphones();
+					emotion++;
+		}
+		// Help
+		else if (findKeyword(statement, "help") >= 0)
+		{
+			response = getRandomHelp();
 					emotion++;
 		}
 		// Response transforming I want to statement
@@ -282,12 +288,9 @@ public class ChatBotZilong
 			"Do you need help with anything?",
 			"What headphones are you planning to purchase?",
 			"What headphones are you looking for?",
-			"",
-			"",
-			""
 	};
 	private String [] randomAngryResponses = {"Do you need anything???", "Hurry up please.", "I don't have all day. What do you need help with?"};
-	private String [] randomHappyResponses = {"It's nice talking to you", "Today is a good day", "You make me feel like a brand new pair of shoes."};
+	private String [] randomHappyResponses = {"Is there anything you need concerning headphones?", "Today is a good day", "Today I feel like buying some new headphones would you like to buy some also?"};
 	
 	private String getRandomBudgetHeadphones()
 	{
@@ -307,6 +310,12 @@ public class ChatBotZilong
 		return RandomGamingHeadphones [r.nextInt(RandomGamingHeadphones.length)];
 	}
 	
+	private String getRandomHelp()
+	{
+		Random r = new Random();
+		return RandomHelp [r.nextInt(RandomHelp.length)];
+	}
+	
 	private String[] RandomBudgetHeadphones = { 
 			"https://www.amazon.com/Skullcandy-Uproar-Headphones-Built-Remote/dp/B00TS1B8XK/ref=sr_1_14?ie=UTF8&qid=1507651425&sr=8-14&keywords=budget+headphones",
 			"https://www.amazon.com/Skullcandy-Uproar-Bluetooth-Wireless-Headphones/dp/B01BPFDTDS/ref=sr_1_15?ie=UTF8&qid=1507651425&sr=8-15&keywords=budget+headphones",
@@ -321,5 +330,13 @@ public class ChatBotZilong
 				"https://www.amazon.com/Razer-Wireless-Surround-Compatible-Playstation/dp/B01DPS4QQ2/ref=sr_1_1?s=electronics&ie=UTF8&qid=1507651762&sr=1-1&keywords=razer+wireless+headphones",
 				"https://www.amazon.com/Razer-Kraken-7-1-Chroma-RZ04-02060100-R3U1/dp/B06XR3NCP4/ref=sr_1_1_sspa?s=electronics&ie=UTF8&qid=1507651778&sr=1-1-spons&keywords=razer+headset&psc=1&smid=AESX3141EPI7X",
 				"https://www.amazon.com/Sennheiser-GAME-ONE-Gaming-Headset/dp/B00KK8ZLEC/ref=sr_1_1_sspa?s=electronics&ie=UTF8&qid=1507651807&sr=1-1-spons&keywords=gaming+headset&psc=1"
+			};
+		private String[] RandomHelp = {
+				"Try unplugging then replugging the Headphones",
+				"Try restarting the computer",
+				"Try getting some new Headphones",
+				"Try bringing them to the store to get them fixed",
+				"See if it is plugged in the right place",
+				"Try getting a new computer"
 			};
 }
