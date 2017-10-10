@@ -16,7 +16,7 @@ public class ChatBotZilong
 	 */	
 	public String getGreeting()
 	{
-		return "Hi! I'm Zilong's Chatbot! What do you need to know about headphones?"
+		return "Hi! I'm Zilong's Chatbot! What do you need to know about headphones?";
 	}
 	
 	/**
