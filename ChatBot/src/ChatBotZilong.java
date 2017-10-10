@@ -90,6 +90,12 @@ public class ChatBotZilong
 			response = "Some gaming headphones I would recommend are " + getRandomGamingHeadphones();
 					emotion++;
 		}
+		// Help
+		else if (findKeyword(statement, "help") >= 0)
+		{
+			response = getRandomHelp();
+					emotion++;
+		}
 		// Response transforming I want to statement
 		else if (findKeyword(statement, "I want to", 0) >= 0)
 		{
@@ -304,6 +310,12 @@ public class ChatBotZilong
 		return RandomGamingHeadphones [r.nextInt(RandomGamingHeadphones.length)];
 	}
 	
+	private String getRandomHelp()
+	{
+		Random r = new Random();
+		return RandomHelp [r.nextInt(RandomHelp.length)];
+	}
+	
 	private String[] RandomBudgetHeadphones = { 
 			"https://www.amazon.com/Skullcandy-Uproar-Headphones-Built-Remote/dp/B00TS1B8XK/ref=sr_1_14?ie=UTF8&qid=1507651425&sr=8-14&keywords=budget+headphones",
 			"https://www.amazon.com/Skullcandy-Uproar-Bluetooth-Wireless-Headphones/dp/B01BPFDTDS/ref=sr_1_15?ie=UTF8&qid=1507651425&sr=8-15&keywords=budget+headphones",
@@ -318,5 +330,13 @@ public class ChatBotZilong
 				"https://www.amazon.com/Razer-Wireless-Surround-Compatible-Playstation/dp/B01DPS4QQ2/ref=sr_1_1?s=electronics&ie=UTF8&qid=1507651762&sr=1-1&keywords=razer+wireless+headphones",
 				"https://www.amazon.com/Razer-Kraken-7-1-Chroma-RZ04-02060100-R3U1/dp/B06XR3NCP4/ref=sr_1_1_sspa?s=electronics&ie=UTF8&qid=1507651778&sr=1-1-spons&keywords=razer+headset&psc=1&smid=AESX3141EPI7X",
 				"https://www.amazon.com/Sennheiser-GAME-ONE-Gaming-Headset/dp/B00KK8ZLEC/ref=sr_1_1_sspa?s=electronics&ie=UTF8&qid=1507651807&sr=1-1-spons&keywords=gaming+headset&psc=1"
+			};
+		private String[] RandomHelp = {
+				"Try unplugging then replugging the Headphones",
+				"Try restarting the computer",
+				"Try getting some new Headphones",
+				"Try bringing them to the store to get them fixed",
+				"See if it is plugged in the right place",
+				"Try getting a new computer"
 			};
 }
