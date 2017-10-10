@@ -11,12 +11,15 @@ public class ChatBotJacky
 {
 	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time.
 	int emotion = 0;
+	int count = 0;
 	private String [] randomNeutralResponses = {"Keyboards are essential things", "Hello", "What are you looking for"};
 	private String [] randomAngryResponses = {"You're testing my patience!", ""};
-	private String [] randomHappyResponses = {"How are you doing?", };
+	private String [] randomHappyResponses = {"How are you doing?", ""};
 	private String [] switchColors = {"red", "brown", "black", "blue", "green", "clear"};
 	boolean askColor;
 	private ArrayList<String> userInput = new ArrayList<String>();
+	private ArrayList<String> userWant = new ArrayList<String>();
+	private ArrayList<String> userWantto = new ArrayList<String>();
 	// userInput.add("");
 	// userInput.get(The number);  Essentially this will grab the item in the array at that position index.
 	public String theSwitch = "";
@@ -72,13 +75,20 @@ public class ChatBotJacky
 		// Response transforming I want to statement
 		else if (findKeyword(statement, "I want to", 0) >= 0)
 		{
+			userWantto.add(statement);
 			response = transformIWantToStatement(statement);
 		}
 		else if (findKeyword(statement, "I want",0) >= 0)
 		{
+			userWant.add(statement);
 			response = transformIWantStatement(statement);
 		}	
-		else
+		/*else if((count % 3 == 0) && (userWant.length > 0) )
+		{
+			response = "";
+		}
+		*/
+		else 
 		{
 			response = getRandomResponse();
 		}
@@ -98,6 +108,20 @@ public class ChatBotJacky
 		}
 		return false;
 	}
+	
+	/*public String askQuestion(String statement)
+	{
+		for(int i = 0; i < userWant.length; i++)
+		{
+			if(findKeyword(statement, switchColors[i]) >= 0)
+			{
+				theSwitch = switchColors[i];
+				return true;
+			}
+		}
+		return false;
+	}
+	*/
 	// System.out.println("Do you want to know about other color switches? \n black \n brown \n blue \n green \n clear");
 	public String switchExplain(String statement)
 	{
