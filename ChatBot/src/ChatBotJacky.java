@@ -110,6 +110,7 @@ public class ChatBotJacky
 	}
 	
 	/*public String askQuestion(String statement)
+	 * 
 	{
 		for(int i = 0; i < userWant.length; i++)
 		{
