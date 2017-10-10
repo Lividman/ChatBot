@@ -289,4 +289,14 @@ public class ChatBotZilong
 	private String [] randomAngryResponses = {"Do you need anything???", "Hurry up please.", "I don't have all day. What do you need help with?"};
 	private String [] randomHappyResponses = {"It's nice talking to you", "Today is a good day", "You make me feel like a brand new pair of shoes."};
 	
+	private String[] randomBudgetHeadphones = { 
+			"",
+			"",
+			""
+		};
+		private String[] randomExpensiveHeadphones = {
+			"",
+			"",
+			""
+		};
 }
