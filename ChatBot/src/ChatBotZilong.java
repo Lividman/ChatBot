@@ -37,7 +37,7 @@ public class ChatBotZilong
 		
 		else if (findKeyword(statement, "no") >= 0)
 		{
-			response = "Then I can't help you";
+			response = "Then I can't help you, come back when you need help with your headphones.";
                 	emotion--;
 		}
 		// buying/purchase
@@ -282,12 +282,9 @@ public class ChatBotZilong
 			"Do you need help with anything?",
 			"What headphones are you planning to purchase?",
 			"What headphones are you looking for?",
-			"",
-			"",
-			""
 	};
 	private String [] randomAngryResponses = {"Do you need anything???", "Hurry up please.", "I don't have all day. What do you need help with?"};
-	private String [] randomHappyResponses = {"It's nice talking to you", "Today is a good day", "You make me feel like a brand new pair of shoes."};
+	private String [] randomHappyResponses = {"Is there anything you need concerning headphones?", "Today is a good day", "Today I feel like buying some new headphones would you like to buy some also?"};
 	
 	private String getRandomBudgetHeadphones()
 	{
