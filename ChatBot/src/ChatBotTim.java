@@ -6,15 +6,9 @@ import java.util.Random;
  * @version September 2017
  */
 public class ChatBotTim {
-	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time.
-		int emotion = 0;
-		/**
-		 * Get a default greeting 	
-		 * @return a greeting
-		 */	
 		public String getGreeting()
 		{
-			return "Hello! This is Tim's Chatbot! What do you want to know about computer mouses?";
+			return "Hello! This is Tim's Chatbot! What do you want to know about computer mouses? Respond with 'nothing' to return to the main file.";
 		}
 		
 		/**
@@ -33,9 +27,9 @@ public class ChatBotTim {
 				response = "Need help with anything?";
 			}
 
-			else if (findKeyword(statement, "no") >= 0)
+			else if (findKeyword(statement, "nothing") >= 0)
 			{
-				response = "Then goodbye.";
+				ChatBotRunner.main(null);
 			}
 			
 			else if (findKeyword(statement, "Tim") >= 0)
@@ -46,26 +40,28 @@ public class ChatBotTim {
 			else if (findKeyword(statement, "buy") >= 0)
 			{
 				response = "Do you want a budget mouse or a good mouse?";
+				recommendation(statement);
 			}
 			
 			else if (findKeyword (statement, "budget") >= 0)
 			{
-				response = "I recommend" + getRandomCheapMice();
+				response = "I recommend " + getRandomCheapMice();
 			}
 			
 			else if (findKeyword(statement, "good") >= 0)
 			{
-				response = "I recommend" + getRandomGoodMice();
+				response = "I recommend " + getRandomGoodMice();
 			}
 			
-			else if (findKeyword(statement, "help") >= 0)
+			else if (help(statement) == true)
 			{
 				response = getHelp();
 			}
+					
 			else
 			{
 				response = "Sorry. Could you repeat that please?";
-			}
+			} 
 			
 			return response;
 		}
@@ -147,7 +143,29 @@ public class ChatBotTim {
 			return findKeyword (statement, goal, 0);
 		}
 		
-
+		private boolean help(String statement)
+		{
+			for(int i = 0; i < helpKeywords.length; i++)
+			{
+				if(findKeyword(statement,helpKeywords[i]) >= 0)
+					return true;
+			}
+			return false;
+		}
+		
+		private String recommendation(String statement)
+		{
+			if (findKeyword(statement, "budget") >= 0)
+			{
+				return "I recommend " + getRandomCheapMice();
+			}
+			else if (findKeyword(statement, "good") >= 0)
+			{
+				return "I recommend " + getRandomGoodMice();
+			}
+			else
+				return "Do you want a budget or a good mouse?";
+		}
 
 		/**
 		 * Pick a default response to use if nothing else fits.
@@ -192,8 +210,7 @@ public class ChatBotTim {
 			"assistance",
 			"not work",
 			"doesn't work",
-			"Help"
-		};
-		
-		
+			"Help",
+			"not working",
+		};	
 }
