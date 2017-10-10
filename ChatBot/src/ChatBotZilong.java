@@ -8,7 +8,7 @@ import java.util.Random;
  */
 public class ChatBotZilong
 {
-	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time.
+	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time. hi
 	int emotion = 0;
 	/**
 	 * Get a default greeting 	
@@ -60,28 +60,28 @@ public class ChatBotZilong
 		// cheap
 		else if (findKeyword(statement, "cheap") >= 0)
 		{
-			response = "It seems you're running on a budget but there are many great headphones that are cheap such as ";
+			response = "It seems you're running on a budget but there are many great headphones that are cheap such as" + getRandomBudgetHeadphones();
 					emotion++;
 		}
 		else if (findKeyword(statement, "budget") >= 0)
 		{
-			response = "Some budget headphones that I recommend are ";
+			response = "Some budget headphones that I recommend are" + getRandomBudgetHeadphones();
 					emotion++;
 		}
 		// Expensive/good/pricey
 		else if (findKeyword(statement, "Expensive") >= 0)
 		{
-			response = "There are many expensive headphones such as ";
+			response = "There are many expensive headphones such as" + getRandomExpensiveHeadphones();
 					emotion++;
 		}
 		else if (findKeyword(statement, "good") >= 0)
 		{
-			response = "There are many good headphones such as ";
+			response = "There are many good headphones such as" + getRandomExpensiveHeadphones();
 					emotion++;
 		}
 		else if (findKeyword(statement, "pricey") >= 0)
 		{
-			response = "There are many pricey headphones such as ";
+			response = "There are many pricey headphones such as" + getRandomExpensiveHeadphones();
 					emotion++;
 		}
 		// Gaming
@@ -289,19 +289,37 @@ public class ChatBotZilong
 	private String [] randomAngryResponses = {"Do you need anything???", "Hurry up please.", "I don't have all day. What do you need help with?"};
 	private String [] randomHappyResponses = {"It's nice talking to you", "Today is a good day", "You make me feel like a brand new pair of shoes."};
 	
-	private String[] randomBudgetHeadphones = { 
-			"",
-			"",
-			""
+	private String getRandomBudgetHeadphones()
+	{
+		Random r = new Random();
+		return RandomBudgetHeadphones [r.nextInt(RandomBudgetHeadphones.length)];
+	}
+	
+	private String getRandomExpensiveHeadphones()
+	{
+		Random r = new Random();
+		return RandomExpensiveHeadphones [r.nextInt(RandomExpensiveHeadphones.length)];
+	}
+	
+	private String getRandomGamingHeadphones()
+	{
+		Random r = new Random();
+		return RandomGamingHeadphones [r.nextInt(RandomGamingHeadphones.length)];
+	}
+	
+	private String[] RandomBudgetHeadphones = { 
+			"https://www.amazon.com/Skullcandy-Uproar-Headphones-Built-Remote/dp/B00TS1B8XK/ref=sr_1_14?ie=UTF8&qid=1507651425&sr=8-14&keywords=budget+headphones",
+			"https://www.amazon.com/Skullcandy-Uproar-Bluetooth-Wireless-Headphones/dp/B01BPFDTDS/ref=sr_1_15?ie=UTF8&qid=1507651425&sr=8-15&keywords=budget+headphones",
+			"https://www.amazon.com/Labvon-Bluetooth-Headphones-Cancelling-Wireless/dp/B074RF9WGJ/ref=sr_1_16?ie=UTF8&qid=1507651425&sr=8-16&keywords=budget+headphones"
 		};
-		private String[] randomExpensiveHeadphones = {
-			"",
-			"",
-			""
+		private String[] RandomExpensiveHeadphones = {
+			"https://www.amazon.com/Beats-Solo-Wired-Ear-Headphone/dp/B010KJDJC6/ref=sr_1_1_sspa?s=electronics&ie=UTF8&qid=1507651704&sr=1-1-spons&keywords=beats+headphones&psc=1",
+			"https://www.amazon.com/Sennheiser-HD-598-Cs-Headphone/dp/B01JP436TS/ref=sr_1_1?s=electronics&ie=UTF8&qid=1507651722&sr=1-1&keywords=senhizer+headphones",
+			"https://www.amazon.com/Skullcandy-Bluetooth-Wireless-Headphones-Black/dp/B00NCSIN4W/ref=sr_1_7?s=electronics&ie=UTF8&qid=1507651740&sr=1-7&keywords=skullcandy+wireless+headphones"
 		};
-		private String[] randomGamingHeadphones = {
-				"",
-				"",
-				""
+		private String[] RandomGamingHeadphones = {
+				"https://www.amazon.com/Razer-Wireless-Surround-Compatible-Playstation/dp/B01DPS4QQ2/ref=sr_1_1?s=electronics&ie=UTF8&qid=1507651762&sr=1-1&keywords=razer+wireless+headphones",
+				"https://www.amazon.com/Razer-Kraken-7-1-Chroma-RZ04-02060100-R3U1/dp/B06XR3NCP4/ref=sr_1_1_sspa?s=electronics&ie=UTF8&qid=1507651778&sr=1-1-spons&keywords=razer+headset&psc=1&smid=AESX3141EPI7X",
+				"https://www.amazon.com/Sennheiser-GAME-ONE-Gaming-Headset/dp/B00KK8ZLEC/ref=sr_1_1_sspa?s=electronics&ie=UTF8&qid=1507651807&sr=1-1-spons&keywords=gaming+headset&psc=1"
 			};
 }
