@@ -12,8 +12,8 @@ public class ChatBotJacky
 	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time.
 	int emotion = 0;
 	private String [] randomNeutralResponses = {"Keyboards are essential things", "Hello", "What are you looking for"};
-	private String [] randomAngryResponses = {""};
-	private String [] randomHappyResponses = {"Hey! d"};
+	private String [] randomAngryResponses = {"You're testing my patience!", ""};
+	private String [] randomHappyResponses = {"How are you doing?", };
 	private String [] switchColors = {"red", "brown", "black", "blue", "green", "clear"};
 	boolean askColor;
 	private ArrayList<String> userInput = new ArrayList<String>();
@@ -26,7 +26,7 @@ public class ChatBotJacky
 	 */
 	public String getGreeting()
 	{
-		return "Hi, I'm Jacky's ChatBot. I can tell you about mechanical keyboards.";
+		return "Hi, I'm Jacky's ChatBot. I can tell you about mechanical keyboards. You should first find out what type of switches you prefer.";
 	}
 	
 	/**
@@ -46,7 +46,11 @@ public class ChatBotJacky
 		}
 		else if (findKeyword(statement, "cheap") >= 0)
 		{
-			response = "hi";
+			response = "There are plenty of cheap keyboards out there.";
+		}
+		else if (findKeyword(statement, "switches") >= 0)
+		{
+			response = "There are many different switch types. Here are a few examples that I can tell you about : \n Red \n Brown \n Black \n Blue \n Green \n Clear";
 		}
 		else if(findSwitch(statement)) 
 		{
@@ -78,8 +82,7 @@ public class ChatBotJacky
 		{
 			response = getRandomResponse();
 		}
-		System.out.println(userInput);
-		//System.out.println(showConvo(0));
+		//System.out.println(userInput);
 		return response;
 	}
 	
