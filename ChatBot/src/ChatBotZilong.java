@@ -8,7 +8,7 @@ import java.util.Random;
  */
 public class ChatBotZilong
 {
-	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time. hi
+	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time. hisgs
 	int emotion = 0;
 	/**
 	 * Get a default greeting 	
