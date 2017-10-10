@@ -43,12 +43,12 @@ public class ChatBotZilong
 		// buying/purchase
 		else if (findKeyword(statement, "buy") >= 0)
 		{
-			response = "What type of headphones would you like to purchase? There are a variety of headphones ranging from budget headphones to more pricey ones.";
+			response = "What type of headphones would you like to purchase? There are a variety of headphones ranging from budget headphones to more pricey ones or even gaming ones.";
 					emotion++;
 		}
 		else if (findKeyword(statement, "purchase") >= 0)
 		{
-			response = "What type of headphones would you like to purchase? There are a variety of headphones ranging from budget/cheaper headphones to more pricey ones.";
+			response = "What type of headphones would you like to purchase? There are a variety of headphones ranging from budget/cheaper headphones to more pricey ones or even gaming ones.";
 					emotion++;
 		}
 		// headphones 
