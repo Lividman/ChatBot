@@ -26,7 +26,7 @@ public class ChatBotTim {
 			{
 				response = "Need help with anything?";
 			}
-
+				
 			else if (findKeyword(statement, "nothing") >= 0)
 			{
 				System.out.println("Then Goodbye");
@@ -53,11 +53,25 @@ public class ChatBotTim {
 				response = "You're welcome! Do you need help with anything else?";
 			}
 			
+			else if (findKeyword (statement, "keyboard") >= 0 || findKeyword (statement, "speaker") >= 0 || findKeyword (statement, "tower") >= 0)
+			{
+				response = "You're going to have to talk to one of the other chatbots for those topics!";
+			}
+			
 			else if (help(statement) == true)
 			{
 				response = getHelp();
 			}
-					
+			
+			else if (findKeyword(statement, "mouse") >= 0)
+			{
+				response = "A computer mouse is an input device that is most "
+						+ "often used with a personal computer. Moving a mouse"
+						+ " along a flat surface can move the on-screen cursor to "
+						+ "different items on the screen. Items can be moved or selected "
+						+ "by pressing the mouse buttons (called clicking).";
+			}
+			
 			else
 			{
 				response = "Sorry. Could you repeat that please?";
@@ -212,5 +226,6 @@ public class ChatBotTim {
 			"doesn't work",
 			"Help",
 			"not working",
+			"working",
 		};	
 }

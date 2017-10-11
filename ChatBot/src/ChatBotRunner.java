@@ -26,20 +26,25 @@ public class ChatBotRunner
 			System.out.println(chatbot1.getGreeting());
 			num = 1;
 		}
-		if(statement.equals("Jacky"))
+		else if(statement.equals("Jacky"))
 		{
 			System.out.println(chatbot2.getGreeting());
 			num = 2;
 		}
-		if (statement.equals("Tim"))
+		else if (statement.equals("Tim"))
 		{
 			System.out.println(chatbot3.getGreeting());
 			num = 3;
 		}
-		if (statement.equals("Zilong"))
+		else if (statement.equals("Zilong"))
 		{
 			System.out.println(chatbot4.getGreeting());
 			num = 4;
+		}
+		else 
+		{
+			System.out.println("Who?");
+			ChatBotRunner.main(args);
 		}
 		
 		
