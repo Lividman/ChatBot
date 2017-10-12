@@ -12,10 +12,13 @@ public class ChatBotJacky
 	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time.
 	int emotion = 0;
 	int count = 0;
-	private String [] randomNeutralResponses = {"Keyboards are essential things", "Hello", "What are you looking for"};
-	private String [] randomAngryResponses = {"You're testing my patience!", ""};
+	private String [] randomNeutralResponses = {"Keyboards are essential things", "Hello", "What are you looking for?"};
+	private String [] randomAngryResponses = {"You're testing my patience!", "I hope you apologize to me."};
 	private String [] randomHappyResponses = {"How are you doing?", ""};
-	private String [] switchColors = {"red", "brown", "black", "blue", "green", "clear"};
+	private String [] switchColors = {"red", "brown", "black", "blue", "green", "clear", "topre"};
+	private String [] recoCheap = {"Red Dragon K552-M", "Qisan Magicforce", "DREVO 84", "EagleTec KG011", "Azio MGK1-K"};
+	private String [] recoSmall = {"Pok3r", "KBparadise	V60", "Leopold FC660M", "Varmillo VA68M", "Anne Pro"};
+	private String [] recoKb = {"WASD Code", "Corsair K70", "CM QuickFire Rapid", "Ducky 5", "Filco Majestouch"};
 	boolean askColor;
 	private ArrayList<String> userInput = new ArrayList<String>();
 	private ArrayList<String> userWant = new ArrayList<String>();
@@ -45,15 +48,15 @@ public class ChatBotJacky
 		
 		if (statement.length() == 0)
 		{
-			response = "Hey, don't be so silent. Say something!";
+			response = "Hey, you should try asking me about keyboard switches";
 		}
 		else if (findKeyword(statement, "cheap") >= 0)
 		{
-			response = "There are plenty of cheap keyboards out there.";
+			response = "There are plenty of cheap keyboards out there. Here is a recommendation. \n" + getRandomCheap();
 		}
 		else if (findKeyword(statement, "switches") >= 0)
 		{
-			response = "There are many different switch types. Here are a few examples that I can tell you about : \n Red \n Brown \n Black \n Blue \n Green \n Clear";
+			response = "There are many different switch types. Here are a few examples that I can tell you about : \n Red \n Brown \n Black \n Blue \n Green \n Clear \n Topre";
 		}
 		else if(findSwitch(statement)) 
 		{
@@ -70,7 +73,7 @@ public class ChatBotJacky
 		}
 		else if(findKeyword(statement, "small") >= 0)
 		{
-			response = "If you want a small keyboard, you should look into purchasing a 60%";
+			response = "If you want a small keyboard, you should look into purchasing a 60%. Here is a recommendation \n" + getRandomSmall();
 		}
 		// Response transforming I want to statement
 		else if (findKeyword(statement, "I want to", 0) >= 0)
@@ -83,6 +86,20 @@ public class ChatBotJacky
 			userWant.add(statement);
 			response = transformIWantStatement(statement);
 		}	
+		else if (findKeyword(statement, "keyboard",0) >= 0)
+		{
+			response = "Here's a keyboard I recommend : " + getRandomKb();
+		}
+		else if((emotion < 0) && (findKeyword(statement, "sorry") >= 0 ))
+		{
+			emotion++;
+			response = "Alright, I'll forgive you.";
+		}
+		else if((emotion >= 0) && (findKeyword(statement, "thank you") >= 0 ))
+		{
+			emotion++;
+			response = "Your welcome. Anything else you want to know?";
+		}
 		/*else if((count % 3 == 0) && (userWant.length > 0) )
 		{
 			response = "";
@@ -109,6 +126,7 @@ public class ChatBotJacky
 		return false;
 	}
 	
+	
 	/*public String askQuestion(String statement)
 	 * 
 	{
@@ -127,29 +145,33 @@ public class ChatBotJacky
 	public String switchExplain(String statement)
 	{
 		String explain = "";
-		if(theSwitch.equals("red"))
+		if(findKeyword(theSwitch, "red") >= 0)
 		{
-			explain = "Red switches are linear";
+			explain = "Red switches are light, linear, non-clicky. They have an actuation force of 45 cN.";
 		}
-		else if(theSwitch.equals("black"))
+		else if(findKeyword(theSwitch, "blue") >= 0)
 		{
-			explain = "Black switches are linear";
+			explain = "Black switches are medium stiff, linear, non-clicky. They have an actuation force of 60 cN.";
 		}
-		else if(theSwitch.equals("brown"))
+		else if(findKeyword(theSwitch, "brown") >= 0)
 		{
-			explain = "Brown switches are tactile";
+			explain = "Brown switches are light, tactile, non-clicky. They have an actuation force of 45 cN.";
 		}
-		else if(theSwitch.equals("blue"))
+		else if(findKeyword(theSwitch, "blue") >= 0)
 		{
-			explain = "BLue switches are tactile";
+			explain = "Blue switches are light, tactile, clicky. They have an actuation force of 50 cN.";
 		}
-		else if(theSwitch.equals("green"))
+		else if(findKeyword(theSwitch, "green") >= 0)
 		{
-			explain = "Green switches are tactile";
+			explain = "Green switches are heavy stiff, tactile, clicky. They have an actuation force of 80 cN.";
 		}
-		else if(theSwitch.equals("clear"))
+		else if(findKeyword(theSwitch, "clear") >= 0)
 		{
-			explain = "Clear switches are tactile";
+			explain = "Clear switches are medium stiff, tactile, non-clicky. They have an actuation force of 55 cN";
+		}
+		else if(findKeyword(theSwitch, "topre") >= 0)
+		{
+			explain = "Topre switches are electrostatic capacitive non-contact keyboard switch.";
 		}
 		return explain;
 	}
@@ -326,4 +348,21 @@ public class ChatBotJacky
 		return randomHappyResponses [r.nextInt(randomHappyResponses.length)];
 	}
 	
+	private String getRandomCheap()
+	{
+		Random cheap = new Random ();
+		return recoCheap [cheap.nextInt(recoCheap.length)];
+	}	
+	
+	private String getRandomSmall()
+	{
+		Random small = new Random ();
+		return recoSmall [small.nextInt(recoSmall.length)];
+	}	
+	
+	private String getRandomKb()
+	{
+		Random kb = new Random ();
+		return recoKb [kb.nextInt(recoKb.length)];
+	}	
 }

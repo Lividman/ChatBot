@@ -21,22 +21,22 @@ public class ChatBotRunner
 		System.out.println("Do you want to talk to Brandon, Jacky, Zilong or Tim?");
 		Scanner in = new Scanner (System.in);
 		String statement = in.nextLine();
-		if (statement.equals("Brandon"))
+		if (statement.equals("Brandon")  || statement.equals("brandon") )
 		{
 			System.out.println(chatbot1.getGreeting());
 			num = 1;
 		}
-		else if(statement.equals("Jacky"))
+		else if(statement.equals("Jacky")  || statement.equals("jacky"))
 		{
 			System.out.println(chatbot2.getGreeting());
 			num = 2;
 		}
-		else if (statement.equals("Tim"))
+		else if (statement.equals("Tim") || statement.equals("tim"))
 		{
 			System.out.println(chatbot3.getGreeting());
 			num = 3;
 		}
-		else if (statement.equals("Zilong"))
+		else if (statement.equals("Zilong") || statement.equals("zilong"))
 		{
 			System.out.println(chatbot4.getGreeting());
 			num = 4;
