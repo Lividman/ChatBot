@@ -16,7 +16,7 @@ public class ChatBotZilong
 	 */	
 	public String getGreeting()
 	{
-		return "Hi! I'm Zilong's Chatbot! What do you need to know about headphones?";
+		return "Hello! I'm Zilong's Chatbot! Do you need help with your current headphones or assistance finding new ones?";
 	}
 	
 	/**
@@ -40,16 +40,48 @@ public class ChatBotZilong
 			response = "Then I can't help you, come back when you need help with your headphones.";
                 	emotion--;
 		}
+		//Color
+		else if (findKeyword(statement, "color") >= 0)
+		{
+			response = "You should get your favorite color! But keep in mind that most headphones are basic colors. What is your favorite color?";
+					emotion++;
+		}
+		else if (FavColor(statement) == true)
+		{
+			response = getFavColor();
+		}
 		// buying/purchase
-		else if (findKeyword(statement, "buy") >= 0)
+		else if (findKeyword(statement, "buy") >= 0 || findKeyword(statement, "purchase") >= 0 || findKeyword(statement, "new") >= 0)
 		{
 			response = "What type of headphones would you like to purchase? There are a variety of headphones ranging from budget headphones to more pricey ones or even gaming ones.";
 					emotion++;
 		}
-		else if (findKeyword(statement, "purchase") >= 0)
+		// cheap/Budget
+		else if (findKeyword(statement, "cheap") >= 0 || findKeyword(statement, "budget") >= 0)
 		{
-			response = "What type of headphones would you like to purchase? There are a variety of headphones ranging from budget/cheaper headphones to more pricey ones or even gaming ones.";
+			response = "It seems you're running on a budget but there are many great headphones that are cheap such as " + getRandomBudgetHeadphones()
+			+ "\nIf you want to view more headphones, which headphones you would like to see budget, expensive, or gaming headphones?";
 					emotion++;
+		}
+		// Expensive/good/pricey
+		else if (findKeyword(statement, "Expensive") >= 0 || findKeyword(statement, "good") >= 0 || findKeyword(statement, "pricey") >= 0)
+		{
+			response = "Oh ok! I would recommend taking a look at these then! " + getRandomExpensiveHeadphones()
+			+ "\nIf you want to view more headphones, which headphones you would like to see budget, expensive, or gaming headphones?";
+					emotion++;
+		}
+		// Gaming
+		else if (findKeyword(statement, "gaming") >= 0)
+		{
+			response = "Some gaming headphones I would recommend are " + getRandomGamingHeadphones()
+			+ "\nIf you want to view more headphones, which headphones you would like to see budget, expensive, or gaming headphones?";
+					emotion++;
+		}
+		// Help
+		else if (RandomHelp(statement) == true)
+		{
+			response = "Have you tried " + getRandomHelp() + "?"
+			+ "\nIf you already tried this you can type 'help' again and we will give another recommendation on what you can try!";
 		}
 		// headphones 
 		else if (findKeyword(statement, "headphones") >= 0)
@@ -57,54 +89,6 @@ public class ChatBotZilong
 			response = "Would you like help with your current headphones or assistance purchasing new ones?";
 					emotion++;
 		}
-		// cheap
-		else if (findKeyword(statement, "cheap") >= 0)
-		{
-			response = "It seems you're running on a budget but there are many great headphones that are cheap such as " + getRandomBudgetHeadphones();
-					emotion++;
-		}
-		else if (findKeyword(statement, "budget") >= 0)
-		{
-			response = "Some budget headphones that I recommend are " + getRandomBudgetHeadphones();
-					emotion++;
-		}
-		// Expensive/good/pricey
-		else if (findKeyword(statement, "Expensive") >= 0)
-		{
-			response = "There are many expensive headphones such as " + getRandomExpensiveHeadphones();
-					emotion++;
-		}
-		else if (findKeyword(statement, "good") >= 0)
-		{
-			response = "There are many good headphones such as " + getRandomExpensiveHeadphones();
-					emotion++;
-		}
-		else if (findKeyword(statement, "pricey") >= 0)
-		{
-			response = "There are many pricey headphones such as " + getRandomExpensiveHeadphones();
-					emotion++;
-		}
-		// Gaming
-		else if (findKeyword(statement, "gaming") >= 0)
-		{
-			response = "Some gaming headphones I would recommend are " + getRandomGamingHeadphones();
-					emotion++;
-		}
-		// Help
-		else if (findKeyword(statement, "help") >= 0)
-		{
-			response = getRandomHelp();
-					emotion++;
-		}
-		// Response transforming I want to statement
-		else if (findKeyword(statement, "I want to", 0) >= 0)
-		{
-			response = transformIWantToStatement(statement);
-		}
-		else if (findKeyword(statement, "I want",0) >= 0)
-		{
-			response = transformIWantStatement(statement);
-		}	
 		else
 		{
 			response = getRandomResponse();
@@ -112,80 +96,6 @@ public class ChatBotZilong
 		
 		return response;
 	}
-	
-	/**
-	 * Take a statement with "I want to <something>." and transform it into 
-	 * "Why do you want to <something>?"
-	 * @param statement the user statement, assumed to contain "I want to"
-	 * @return the transformed statement
-	 */
-	private String transformIWantToStatement(String statement)
-	{
-		//  Remove the final period, if there is one
-		statement = statement.trim();
-		String lastChar = statement.substring(statement
-				.length() - 1);
-		if (lastChar.equals("."))
-		{
-			statement = statement.substring(0, statement
-					.length() - 1);
-		}
-		int psn = findKeyword (statement, "I want to", 0);
-		String restOfStatement = statement.substring(psn + 9).trim();
-		return "Why do you want to " + restOfStatement + "?";
-	}
-
-	
-	/**
-	 * Take a statement with "I want <something>." and transform it into 
-	 * "Would you really be happy if you had <something>?"
-	 * @param statement the user statement, assumed to contain "I want"
-	 * @return the transformed statement
-	 */
-	private String transformIWantStatement(String statement)
-	{
-		//  Remove the final period, if there is one
-		statement = statement.trim();
-		String lastChar = statement.substring(statement
-				.length() - 1);
-		if (lastChar.equals("."))
-		{
-			statement = statement.substring(0, statement
-					.length() - 1);
-		}
-		int psn = findKeyword (statement, "I want", 0);
-		String restOfStatement = statement.substring(psn + 6).trim();
-		return "Would you really be happy if you had " + restOfStatement + "?";
-	}
-	
-	
-	/**
-	 * Take a statement with "I <something> you" and transform it into 
-	 * "Why do you <something> me?"
-	 * @param statement the user statement, assumed to contain "I" followed by "you"
-	 * @return the transformed statement
-	 */
-	private String transformIYouStatement(String statement)
-	{
-		//  Remove the final period, if there is one
-		statement = statement.trim();
-		String lastChar = statement.substring(statement
-				.length() - 1);
-		if (lastChar.equals("."))
-		{
-			statement = statement.substring(0, statement
-					.length() - 1);
-		}
-		
-		int psnOfI = findKeyword (statement, "I", 0);
-		int psnOfYou = findKeyword (statement, "you", psnOfI);
-		
-		String restOfStatement = statement.substring(psnOfI + 1, psnOfYou).trim();
-		return "Why do you " + restOfStatement + " me?";
-	}
-	
-
-	
 	
 	/**
 	 * Search for one word in phrase. The search is not case
@@ -284,14 +194,32 @@ public class ChatBotZilong
 		return randomHappyResponses [r.nextInt(randomHappyResponses.length)];
 	}
 	
-	private String [] randomNeutralResponses = {"Interesting, tell me more",
-			"Do you need help with anything?",
-			"What headphones are you planning to purchase?",
-			"What headphones are you looking for?",
+	private String [] randomNeutralResponses = {"I don't understand what you mean. Can you clarify please?",
+			"Sorry, I dont understand what you mean. Can you rephrase that?",
+			"Can you rephrase that?",
+			"What? Could you make that easier to understand?",
 	};
 	private String [] randomAngryResponses = {"Do you need anything???", "Hurry up please.", "I don't have all day. What do you need help with?"};
-	private String [] randomHappyResponses = {"Is there anything you need concerning headphones?", "Today is a good day", "Today I feel like buying some new headphones would you like to buy some also?"};
+	private String [] randomHappyResponses = {"Is there anything you need concerning headphones?", "I dont fully understand what you mean can you rephrase that?"};
 	
+	private boolean FavColor(String statement)
+	{
+		for(int i = 0; i < FavColorKeywords.length; i++)
+		{
+			if(findKeyword(statement,FavColorKeywords[i]) >= 0)
+				return true;
+		}
+		return false;
+	}
+	private boolean RandomHelp(String statement)
+	{
+		for(int i = 0; i < RandomHelpKeywords.length; i++)
+		{
+			if(findKeyword(statement,RandomHelpKeywords[i]) >= 0)
+				return true;
+		}
+		return false;
+	}
 	private String getRandomBudgetHeadphones()
 	{
 		Random r = new Random();
@@ -314,6 +242,12 @@ public class ChatBotZilong
 	{
 		Random r = new Random();
 		return RandomHelp [r.nextInt(RandomHelp.length)];
+	}
+	
+	private String getFavColor()
+	{
+		Random r = new Random();
+		return FavColor [r.nextInt(FavColor.length)];
 	}
 	
 	private String[] RandomBudgetHeadphones = { 
@@ -339,4 +273,58 @@ public class ChatBotZilong
 				"See if it is plugged in the right place",
 				"Try getting a new computer"
 			};
+		private String[] RandomHelpKeywords = {
+				"help",
+				"broken",
+				"broke",
+				"no sound",
+				"wrong with",
+				"can't hear",
+				"cant hear",
+				"mute",
+				"assistance",
+				"not work",
+				"doesn't work",
+				"Help",
+				"not working",
+				"working",
+			};	
+		private String[] FavColor = {
+				"I like that color too! What type would you like budget, expensive, or gaming headphones?" 
+				+" The headphone might not be made in the color you like though.",
+			};
+		private String[] FavColorKeywords = {
+				"Black",
+				"Red",
+				"Blue",
+				"Green",
+				"Yellow",
+				"Orange",
+				"Gray",
+				"Gold",
+				"Silver",
+				"Purple",
+				"Burgundy",
+				"White",
+				"Brown",
+				"Pink",
+				"Violet",
+				"Lavender",
+				"black",
+				"red",
+				"blue",
+				"green",
+				"yellow",
+				"orange",
+				"gray",
+				"gold",
+				"silver",
+				"purple",
+				"burgundy",
+				"white",
+				"brown",
+				"pink",
+				"violet",
+				"lavender",
+			};	
 }
