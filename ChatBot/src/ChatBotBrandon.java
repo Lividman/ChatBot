@@ -61,7 +61,11 @@ public class ChatBotBrandon
 				else if (findKeyword(statement, "I want",0) >= 0)
 				{
 					response = transformIWantStatement(statement);
-				}	
+				}
+				else if (findKeyword(statement, "What is",0) >= 0)
+				{
+					response = transformWhatis(statement);
+				}		
 				else
 				{
 					response = getRandomResponse();
@@ -91,6 +95,20 @@ public class ChatBotBrandon
 			int psn = findKeyword (statement, "I want to", 0);
 			String restOfStatement = statement.substring(psn + 9).trim();
 			return "Why do you want to " + restOfStatement + "?";
+		}
+		private String transformWhatis(String statement)
+		{
+			statement = statement.trim();
+			String lastChar = statement.substring(statement
+					.length() - 1);
+			if (lastChar.equals("?"))
+			{
+				statement = statement.substring(0, statement
+						.length() - 1);
+			}
+			int psn = findKeyword (statement, "What is");
+			String rest = statement.substring(psn + 7);
+			return "" + rest + " is probably something you can google";
 		}
 
 		
@@ -231,16 +249,8 @@ public class ChatBotBrandon
 		private String getRandomResponse ()
 		{
 			Random r = new Random ();
-			if (emotion == 0)
-			{	
-				return randomNeutralResponses [r.nextInt(randomNeutralResponses.length)];
-			}
-			if (emotion < 0)
-			{	
-				return randomAngryResponses [r.nextInt(randomAngryResponses.length)];
-			}	
-			return randomHappyResponses [r.nextInt(randomHappyResponses.length)];
-		}
+			return randomComputerResponses [r.nextInt(randomComputerResponses.length)];
+		}	
 		
 		private String [] randomNeutralResponses = {"Interesting, tell me more",
 				"Hmmm.",
@@ -250,7 +260,7 @@ public class ChatBotBrandon
 				"So, would you like to go for a walk?",
 				"Could you say that again?"
 		};
-		private String [] randomAngryResponses = {"Bahumbug.", "Harumph", "The rage consumes me!"};
-		private String [] randomHappyResponses = {"H A P P Y, what's that spell?", "Today is a good day", "You make me feel like a brand new pair of shoes."};
+		private String [] randomComputerResponses = {"Computers are nice!", "There are computers that use themselves out there!","Almost everything is a computer nowadays!"};
+		
 		
 }
