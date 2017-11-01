@@ -34,7 +34,7 @@ public class ChatBotBrandon
 				response = "Alright, lets play rock paper scissors, let me warn you though, I'm quite good";
 	            state = "game";
 	        }
-			else if(findKeyword(statement, "rock") >= 0)
+			/*else if(findKeyword(statement, "rock") >= 0)
 			{
 				response = "paper! Haha, i win you suck lol";
 			}
@@ -71,7 +71,7 @@ public class ChatBotBrandon
 					response = getRandomResponse();
 				}
 			}
-			
+			*/
 			return response;
 		}
 		
@@ -108,7 +108,7 @@ public class ChatBotBrandon
 			}
 			int psn = findKeyword (statement, "What is");
 			String rest = statement.substring(psn + 7);
-			return "" + rest + " is probably something you can google";
+			return rest + " is probably something you can google";
 		}
 
 		
@@ -240,7 +240,19 @@ public class ChatBotBrandon
 			return findKeyword (statement, goal, 0);
 		}
 		
-
+		private String rps(String statement)
+		{
+			int Random = Math.ra();
+			int[] num = {1,2,3};
+			
+			if (findKeyword(statement, "scissors") >= 0)
+			{
+				if(ans == 0)
+				{
+					
+				}
+			}
+		}
 
 		/**
 		 * Pick a default response to use if nothing else fits.
