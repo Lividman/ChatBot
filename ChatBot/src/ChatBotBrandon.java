@@ -23,55 +23,35 @@ public class ChatBotBrandon
 		 */
 		public String getResponse(String statement)
 		{
-			String response = "";
+			String response = "Hmm, i dont quite understand what you said, could you rephrase it?";
 			
 			if (statement.length() == 0)
 			{
 				response = "Hey man I can only respond if you say something";
 			}
+			else if (findKeyword(statement, "computer") >=0)
+			{
+				response = "Alright, lets talk about computers then";
+			}
 			else if (findKeyword(statement, "Game") >= 0)
 			{
-				response = "Alright, lets play rock paper scissors, let me warn you though, I'm quite good";
+				response = "Alright, lets play rock paper scissors, let me warn you though, I'm quite good. When you want to stop, type done";
 	            state = "game";
 	        }
-			/*else if(findKeyword(statement, "rock") >= 0)
+			if(state == "game" && (findKeyword(statement, "rock") >=0 || findKeyword(statement, "paper") >=0 || findKeyword(statement, "scissors") >=0))
 			{
-				response = "paper! Haha, i win you suck lol";
+				response = rps(statement);
 			}
-			else if(findKeyword(statement, "paper") >= 0)
+			if(state == "game" && findKeyword(statement, "done") >=0  )
 			{
-				response = "scissors! Haha, i win you suck lol";
-			}
-			else if(findKeyword(statement, "scissors") >= 0)
+				state = "everythingelse";
+				response = "Lets talk about computers now!";
+			}	
+			
+			if (findKeyword(statement, "What is", 0) >= 0)
 			{
-				response = "rock! Haha, i win you suck lol";
+				response = transformWhatis(statement);
 			}
-			if (findKeyword(statement, "done") >= 0)
-			{
-				response = "Ah, so you're done playing i guess? We can talk about computers now";
-				state = "computers";
-			}
-			if(state != "game")	
-			{
-				// Response transforming I want to statement
-				if (findKeyword(statement, "I want to", 0) >= 0)
-				{
-					response = transformIWantToStatement(statement);
-				}
-				else if (findKeyword(statement, "I want",0) >= 0)
-				{
-					response = transformIWantStatement(statement);
-				}
-				else if (findKeyword(statement, "What is",0) >= 0)
-				{
-					response = transformWhatis(statement);
-				}		
-				else
-				{
-					response = getRandomResponse();
-				}
-			}
-			*/
 			return response;
 		}
 		
@@ -242,16 +222,59 @@ public class ChatBotBrandon
 		
 		private String rps(String statement)
 		{
-			int Random = Math.ra();
+			Random rn = new Random();
+			int r = (int) (Math.random() * (3 - 0)) + 0;
+			String response = "";
 			int[] num = {1,2,3};
+			int ans = num[r];
 			
 			if (findKeyword(statement, "scissors") >= 0)
 			{
 				if(ans == 0)
 				{
-					
+				 response = "Rock! Ha, I win!";
+				}
+				if(ans == 1)
+				{
+				 response = "Paper! Dang, I lost";
+				}
+				if(ans == 2)
+				{
+				response = "Scissors!We tied... are you cheating?";
 				}
 			}
+			if (findKeyword(statement, "Paper") >= 0)
+			{
+				if(ans == 0)
+				{
+					response = "Rock! Ah, well, paper beats rock.";
+				}
+				if(ans == 1)
+				{
+					response = "Paper! A tie? alright fine.";
+				}
+				if(ans == 2)
+				{
+					response ="Scissors!A win's a win, sorry bud.";
+				}
+			}
+			if (findKeyword(statement, "rock") >= 0)
+			{
+				if(ans == 0)
+				{
+					response = "Rock! Ah, a tie! ";
+				}
+				if(ans == 1)
+				{
+					response ="Paper! A win, rock paper scissors is my life";
+				}
+				if(ans == 2)
+				{
+					response = "Scissors!Ah! You crushed my scissors :(";
+				}
+			}
+			return response;
+			
 		}
 
 		/**
