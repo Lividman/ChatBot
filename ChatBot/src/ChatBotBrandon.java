@@ -52,6 +52,13 @@ public class ChatBotBrandon
 			{
 				response = transformWhatis(statement);
 			}
+			if (findKeyword(statement, "How", 0) >=0 && findKeyword(statement,"build") >=0 && findKeyword(statement, "computer") >= 0 )
+			{
+				response = "Building a computer is simple, but instead of me explaining it, i feel like a website could do a better job"
+						+ "https://www.wikihow.com/Build-a-Computer"
+						+ "Wikis are the best thing ever btw";
+						
+			}
 			return response;
 		}
 		
@@ -78,6 +85,8 @@ public class ChatBotBrandon
 		}
 		private String transformWhatis(String statement)
 		{
+			int r = (int) (Math.random() * (3 - 0)) + 0;
+			String wiki = GPUlink[r];
 			statement = statement.trim();
 			String lastChar = statement.substring(statement
 					.length() - 1);
@@ -88,7 +97,37 @@ public class ChatBotBrandon
 			}
 			int psn = findKeyword (statement, "What is");
 			String rest = statement.substring(psn + 7);
-			return rest + " is probably something you can google";
+			if((findKeyword(statement, "GPU", 0) >= 0))
+			{
+				return(rest + "is a programmable logic chip (processor) specialized for display functions."
+						+ "The GPU renders images, animations and video for the computer's screen.\n"
+						+ "The " + GPU[r] +  "Here is a list of GPUs from one of many gpu manufacturers.\n" + GPUlink[r]);
+				
+			}
+			else if((findKeyword(statement, "computer", 0) >= 0))
+			{
+				return "A computer.... is something hard to define"; 
+			}
+			else if((findKeyword(statement, "CPU", 0) >= 0))
+			{
+				return "Personally, i find Intel CPUs to work just fine. All CPUs are expensive sadly, but Intel's works really well."
+						+ "Here is a link to intel CPUS: "
+						+ "https://en.wikipedia.org/wiki/List_of_Intel_microprocessors"
+						+ "Offical Website:"
+						+ ""; 
+			}
+			else if((findKeyword(statement, "CPU", 0) >= 0))
+			{
+				return "Personally, i find Intel CPUs to work just fine. All CPUs are expensive sadly, but Intel's works really well."
+						+ "Here is a link to intel CPUS: "
+						+ "https://en.wikipedia.org/wiki/List_of_Intel_microprocessors"
+						+ "Offical Website:"
+						+ ""; 
+			}
+			else
+			{
+				return("My knowledge of computers is limited as a robot, but i will be upgraded in the future");
+			}
 		}
 
 		
@@ -222,7 +261,7 @@ public class ChatBotBrandon
 		
 		private String rps(String statement)
 		{
-			Random rn = new Random();
+			
 			int r = (int) (Math.random() * (3 - 0)) + 0;
 			String response = "";
 			int[] num = {1,2,3};
@@ -296,6 +335,6 @@ public class ChatBotBrandon
 				"Could you say that again?"
 		};
 		private String [] randomComputerResponses = {"Computers are nice!", "There are computers that use themselves out there!","Almost everything is a computer nowadays!"};
-		
-		
+		private String [] GPU = {"Nividia Series", "AMD Series", "Intel Series"};
+		private String [] GPUlink = {"https://en.wikipedia.org/wiki/List_of_Nvidia_graphics_processing_units", "https://en.wikipedia.org/wiki/List_of_AMD_graphics_processing_units", "https://en.wikipedia.org/wiki/List_of_Intel_graphics_processing_units"};
 }
